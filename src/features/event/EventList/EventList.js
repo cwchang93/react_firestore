@@ -6,10 +6,12 @@ class EventList extends Component {
         return (
 
             <Fragment>
+                {this.props.events.map((event) => {
+                    return (
+                        <EventListItem event={event} />
 
-                <EventListItem />
-                <EventListItem />
-                <EventListItem />
+                    )
+                })}
             </Fragment>
 
         )
