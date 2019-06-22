@@ -11,6 +11,18 @@ class EventForm extends Component {
         hostedBy: ''
     }
 
+    componentDidMount() {
+        console.log('this.props.selectedEvent');
+        console.log(this.props.selectedEvent);
+        if (this.props.selectedEvent !== null) {
+            // 這裡要用解構不然需要一個一個寫key跟value
+            this.setState({
+                ...this.props.selectedEvent
+            })
+        }
+
+    }
+
     handleInputChange = ({ target: { name, value } }) => {
 
         this.setState({
@@ -20,13 +32,15 @@ class EventForm extends Component {
     }
 
     handleFormSubmit = () => {
-        console.log(this.state)
+        // console.log('hi submit');
+        // console.log(this.state);
+        this.props.createEvents(this.state)
+
     }
 
     render() {
-
         const { cancelFormOpen } = this.props;
-        const { title } = this.state;
+        const { title, date, city, venue, hostedBy } = this.state;
         return (
             <Segment>
                 <Form onSubmit={this.handleFormSubmit} autoComplete='off'>
@@ -46,6 +60,7 @@ class EventForm extends Component {
                             onChange={(e) => {
                                 this.handleInputChange(e)
                             }}
+                            value={date}
                         />
                     </Form.Field>
                     <Form.Field>
@@ -54,6 +69,7 @@ class EventForm extends Component {
                             onChange={(e) => {
                                 this.handleInputChange(e)
                             }}
+                            value={city}
                         />
                     </Form.Field>
                     <Form.Field>
@@ -62,6 +78,7 @@ class EventForm extends Component {
                             onChange={(e) => {
                                 this.handleInputChange(e)
                             }}
+                            value={venue}
                         />
                     </Form.Field>
                     <Form.Field>
@@ -70,6 +87,7 @@ class EventForm extends Component {
                             onChange={(e) => {
                                 this.handleInputChange(e)
                             }}
+                            value={hostedBy}
                         />
                     </Form.Field>
                     <Button positive type="submit">
