@@ -31,10 +31,13 @@ class EventForm extends Component {
 
     }
 
-    handleFormSubmit = () => {
-        // console.log('hi submit');
-        // console.log(this.state);
-        this.props.createEvents(this.state)
+    handleFormSubmit = (evt) => {
+        evt.preventDefault();
+        if (this.state.id) {
+            this.props.updateEvent(this.state);
+        } else {
+            this.props.createEvents(this.state);
+        }
 
     }
 
@@ -43,7 +46,8 @@ class EventForm extends Component {
         const { title, date, city, venue, hostedBy } = this.state;
         return (
             <Segment>
-                <Form onSubmit={this.handleFormSubmit} autoComplete='off'>
+                {/* <Form onSubmit={this.handleFormSubmit} autoComplete='off'> */}
+                <Form onSubmit={(evt) => this.handleFormSubmit(evt)} autoComplete='off'>
                     <Form.Field>
                         <label>Event Title</label>
                         <input
