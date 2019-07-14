@@ -10,6 +10,7 @@ import PeopleDashboard from '../../features/user/PeopleDashboard/PeopleDashboard
 import UserDetailedPage from '../../features/user/UserDetailed/UserDetailedPage';
 import SettingsDashboard from '../../features/user/Settings/SettingsDashboard';
 import testComponent from '../../features/testArea/testComponent';
+import newTestComponent from '../../features/newTestArea/newTestComponent';
 
 // import { Button } from 'semantic-ui-react'
 
@@ -32,6 +33,7 @@ class App extends Component {
               <Route path='/createEvent' component={EventForm} />
 
               <Route path='/test' component={testComponent} />
+              <Route path='/newTest' component={newTestComponent} />
             </Container>
           </>
 
